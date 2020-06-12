@@ -1,0 +1,83 @@
+<div style="padding: 20px;">
+<p-table [columns]="cols" [value]="negocios" selectionMode="single" [(selection)]="selectedNegocio" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="10">
+  <ng-template pTemplate="caption">
+      Mis Negocios
+  </ng-template>
+  <ng-template pTemplate="header" let-columns>
+      <tr>
+          <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+              {{col.header}}
+              <p-sortIcon [field]="col.field"></p-sortIcon>
+          </th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr [pSelectableRow]="rowData" *ngFor="let neg of negocios">
+        <td>
+          
+          <img *ngIf="neg.avatar" [alt]="neg.nombre"  [src]=getSantizeUrl(neg.avatar.archivoB64) width="32" style="vertical-align: middle" />
+          <img *ngIf="neg.avatar" src="../../../../assets/img/imagen_no_disponible.jfif" width="32" style="vertical-align: middle" /> 
+     
+          <span style="vertical-align: middle; margin-left: .5em">{{neg.nombre}}</span>
+          
+      </td>
+      <td>
+          
+        <span style="vertical-align: middle; margin-left: .5em">{{neg.direccion}}</span>
+        
+    </td>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="summary" let-rowData>
+      
+  </ng-template>    
+</p-table>
+</div>
+
+
+
+<p-dialog header="Mi Negocio" [(visible)]="displayDialog" [focusOnShow]="false" [responsive]="true" showEffect="fade" [modal]="true"  [style]="{width: '300px'}">
+  <div class="p-grid ui-fluid" *ngIf="nego">
+      <div class="p-col-4">
+          <label for="vin">Nombre</label>
+      </div>
+      <div class="p-col-8">
+          <input pInputText id="nombre" [(ngModel)]="nego.nombre" autofocus />
+      </div>
+      <div class="p-col-4">
+        <label for="vin">Direccion:</label>
+    </div>
+    <div class="p-col-8">
+        <input pInputText id="nombre" [(ngModel)]="nego.direccion" autofocus />
+    </div>
+      
+      <div class="p-col-4">
+          <label for="year">Descripcion</label>
+      </div>
+      <div class="p-col-8">
+          <input pInputText id="year" [(ngModel)]="nego.descripcion" />
+      </div>
+      <div class="p-col-4">
+          <label for="brand">Cedular</label>
+      </div>
+      <div class="p-col-8">
+          <input pInputText id="brand" [(ngModel)]="nego.celular" />
+      </div>
+      <div class="p-col-4">
+          <label for="color">Teléfono</label>
+      </div>
+      <div class="p-col-8">
+          <input pInputText id="color" [(ngModel)]="nego.telefono" />
+      </div>
+  </div>
+  <p-footer>
+      <div class="ui-dialog-buttonpane ui-helper-clearfix">
+          <button type="button" pButton icon="pi pi-times" label="Borrar"></button>
+          <button type="button" pButton icon="pi pi-check" (click)="save()" label="Grabar"></button>
+      </div>
+  </p-footer>
+</p-dialog>
+
+
+
+

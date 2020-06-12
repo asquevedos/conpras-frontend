@@ -1,0 +1,100 @@
+
+
+<br>
+<br>
+<br>
+
+<div *ngIf="variable" style="text-align: center;">
+  <br>
+  <br>
+  <br>
+  <br>
+  
+  
+  <br>
+  <div class="spinner-border" style="width: 7rem; height: 7rem;" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <br>
+  <p>Cargando.....</p>
+</div>
+
+<div class="container" *ngIf="productos.length == 0">
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Información!!!</h4>
+    <p>Esta tienda no tiene productos o servicios por el momento</p>
+    <hr>
+    <p class="mb-0">Estamos Trabajado en ello</p>
+  </div>
+
+</div>
+
+
+<div class="container" *ngIf="productos.length > 0">
+
+  <div  style="max-width: 800px;" style="border: none;">
+    <div class="row no-gutters">
+      <div class="col-md-2">
+         <img *ngIf="productos[0].negocio.avatar"  class="image-holder" [src]=getSantizeUrl(productos[0].negocio.avatar.archivoB64)>
+         <img *ngIf="!productos[0].negocio.avatar" class="image-holder" src="../../assets/img/imagen_no_disponible1.jfif">
+       
+    
+      </div>
+      <div class="col-md-4">
+        <div class="card-body">
+          <h5 class="card-title">{{productos[0].negocio.nombre | uppercase}}</h5>
+          <p class="card-text">{{productos[0].negocio.descripcion | uppercase}}</p>
+          <p class="card-text"><small class="text-muted"><i class="fas fa-phone-alt"></i>{{productos[0].negocio.telefono}}</small></p>
+          <p class="card-text"><i class="fab fa-whatsapp"></i>{{productos[0].negocio.celular}}</p>
+          <p class="card-text"><i class="fas fa-map-marker"></i>{{productos[0].negocio.direccion | uppercase}}</p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab"  role="tab" aria-controls="home" aria-selected="true">Productos & Servicios ({{productos.length}})</a>
+  </li>
+ 
+ 
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      
+
+   
+<div class="carts">
+      
+  <div class="cart" *ngFor="let producto of productos" >
+    
+    
+    <img *ngIf="producto.imagen" class="image-holder" [src]=getSantizeUrl(producto.imagen.archivoB64)>
+    <img *ngIf="!producto.imagen" class="image-holder" src="../../assets/img/nodisponible_producto.jfif">
+    
+   
+    <h5 style="margin-top: -25px; color: white; background: rgb(87, 5, 5); text-align: left;  opacity:0.4; font-size: 14px; padding: 5px;">{{producto.nombre}} </h5>
+    <p style="height: 90px;">{{producto.descripcion}}</p>
+    <div style="display: flex; justify-content: space-between; margin-left: 20px; margin-right: 20px;">
+    
+    <h5 class="precio">{{producto.precio | currency: 'USD $ ' : 'symbol':'.0-2'}} {{producto.descripcionPrecio}}</h5>
+   
+    
+   
+  </div>
+  <div style="text-align: right; margin-right: 20px;">
+    <br>
+  <button type="button" class="btn btn-danger btn-sm " (click)="add_cart(producto.id)"> <i class="fas fa-cart-plus"> </i> Añadir al Carrito</button>
+
+</div>
+
+  </div>
+
+</div>
+
+</div>
+</div>

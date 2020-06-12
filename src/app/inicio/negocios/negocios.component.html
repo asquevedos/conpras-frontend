@@ -1,0 +1,51 @@
+
+<br>
+<br>
+<div *ngIf="variable" style="text-align: center;">
+  <br>
+  <br>
+  <br>
+  <br>
+  
+  
+  <br>
+  <div class="spinner-border" style="width: 7rem; height: 7rem;" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <br>
+  <p>Cargando.....</p>
+</div>
+
+<div class="container">
+  <div class="alert alert-primary" role="alert" >
+      Negocios
+    </div>
+  </div>
+  
+  
+    <div class="container" id="ccc">
+      
+      <div class="row" id ="rrr">
+      
+      
+      <div class="card" style="width: 18rem;" *ngFor="let negocio of negocios" >
+      <div *ngIf="!negocio.avatar"> <img src="../../assets/img/imagen_no_disponible.jfif" class="card-img-top" alt="..."> </div>
+      <div *ngIf="negocio.avatar"> <img [src]=getSantizeUrl(negocio.avatar.archivoB64) class="card-img-top" alt="..."> </div>
+      
+      
+      <hr>
+      <div class="card-body" style="padding: 10px;">
+       
+        <p class="card-text" style="padding: -2px; font-size: 20px ; ">{{negocio.nombre| uppercase}}</p>
+        <p class="card-text" style="text-align: left; font-weight: normal;"> {{negocio.descripcion | uppercase}}</p>
+        <p class="card-text" style="text-align: left; font-weight: normal;"> <i class="fas fa-phone-alt"></i> {{negocio.telefono | uppercase}}</p>
+        <p class="card-text" style="text-align: left; font-weight: normal;"> <i class="fab fa-whatsapp"></i> {{negocio.celular | uppercase}}</p>
+        <p class="card-text" style="text-align: left; font-size: 13px; font-weight: normal;"> <i class="fas fa-map-marker"></i> {{negocio.direccion}}</p>
+        <button type="button" class="btn btn-primary btn-sm btn-block" (click)="visitar_tienda(negocio.id)">Visitar Tienda</button>
+        
+  
+      </div>
+      </div>
+      
+      </div>
+      </div>

@@ -1,0 +1,41 @@
+
+
+<br>
+<br>
+<br>
+
+<div *ngIf="variable" style="text-align: center;">
+  <br>
+  <br>
+  <br>
+  <br>
+  
+  
+  <br>
+  <div class="spinner-border" style="width: 7rem; height: 7rem;" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <br>
+  <p>Cargando.....</p>
+</div>
+
+
+  
+
+<div class="container" >
+  
+
+    <div class="row" >
+
+
+<div class="card" style="width: 18rem;" *ngFor="let tipo_negocio of tiposNegocios" (click)="ver_negocios(tipo_negocio.id)" >
+    <img class="image-holder" [src]=getSantizeUrl(tipo_negocio.imagen.archivoB64)>
+    
+    <div class="card-body">
+      <p class="card-text">{{tipo_negocio.nombre | uppercase}} <i class="fas fa-eye"></i></p>
+    </div>
+  </div>
+
+</div>
+</div>
+

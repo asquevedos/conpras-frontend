@@ -1,0 +1,28 @@
+
+
+<p>cadena de busqueda: {{texto}}</p>
+
+<div class="container">
+
+
+  <p-card  *ngFor="let producto of productos"  header="{{producto.nombre}}" subheader="{{producto.precio | currency}}" [style]="{width: '360px'}" styleClass="ui-card-shadow">
+    <p-header>
+      <div *ngIf="!producto.imagen"> <img src="../../assets/img/imagen_no_disponible.jfif" class="card-img-top" alt="..."> </div>
+      <div *ngIf="producto.imagen"> <img [src]=getSantizeUrl(producto.imagen.archivoB64) class="card-img-top" alt="..."> </div>
+      
+       
+    </p-header>
+    <div>{{producto.descripcion}} </div>
+    <p-footer>
+        <button pButton type="button" label="Save" icon="pi pi-check" style="margin-right: .25em"></button>
+        <button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary"></button>
+    </p-footer>
+</p-card>
+
+
+
+
+
+<p-paginator [rows]="paginador.numberOfElements" [totalRecords]="paginador.totalPages"></p-paginator>
+</div>
+

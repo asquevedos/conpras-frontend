@@ -1,0 +1,58 @@
+
+<div class="container">
+<div style="text-align: center;"  *ngIf="cargado">
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      
+    </div>
+  </div>
+  <br>
+  </div>
+
+<div class="homeadminclass" *ngIf="!cargado">
+    <p class="titulo_adim"><i class="fas fa-cog"> </i> Panel de Control</p> 
+    <div class="menu">
+      
+      <div class="menu_izq">
+             
+           <div class="botonera">
+          
+            <div class="list-group">
+              
+              <a href="#" class="list-group-item list-group-item-action" routerLink="/inicio/publicador/misnegocio"><i class="fas fa-store"></i>Mis Locales</a>
+              <a href="#" class="list-group-item list-group-item-action" routerLink="/home/publicador/horario_atencion"><i class="far fa-clock"></i>Horarios</a>
+              <a href="#" class="list-group-item list-group-item-action" routerLink="/home/publicador/producto_create"><i class="fab fa-product-hunt"></i>Productos</a>
+              
+
+               </div>
+          
+          
+          
+            
+         
+            
+          </div>
+      
+      </div>
+      <div class="menu_derecho">
+       
+        
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ 
+  
+
+
+
+
+
+<router-outlet></router-outlet>
+<app-misnegocios></app-misnegocios>
+
+
+
